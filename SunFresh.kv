@@ -1,0 +1,627 @@
+#Taylor Paielli, Timothy Sullivan, 12:00 GUI Project
+#:import Factory kivy.factory.Factory
+
+#TS
+<Login>:
+    RelativeLayout
+        canvas.before:
+            Rectangle:
+                source:'gradient.png'
+                size: root.width, root.height
+                pos: self.pos
+    FloatLayout:
+        Label:
+            text : "ASUrite: "
+            font_size : 50
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.2, 0.1
+            pos_hint : {"x" : 0.25, "top" : 0.7}
+            background_color : "#000000"
+        TextInput:
+            id: name
+            multiline : False
+            size_hint : 0.3, 0.1
+            pos_hint : {"x" : 0.45, "top" : 0.7}
+
+        Label:
+            text : "Password: "
+            font_size : 50
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.2, 0.1
+            pos_hint : {"x" : 0.25, "top" : 0.5}
+            background_color: "black"
+        TextInput:
+            id: password
+            multiline : False
+            size_hint : 0.3, 0.1
+            pos_hint : {"x" : 0.45, "top" : 0.5}
+
+        Button:
+            text : "Log in"
+            font_size : 40
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.3, 0.1
+            pos_hint : {"x" : 0.39, "top" : 0.28}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "left"
+                root.manager.transition.duration = 1
+                root.manager.current = 'home'
+                root.login()
+
+        Image:
+            source : "logo.png"
+            size_hint_x : 0.1
+            pos_hint : {"x" : 0.45, "top" : 1.33}
+
+
+#TP
+<Home>:
+    RelativeLayout
+        canvas.before:
+            Rectangle:
+                source:'gradient.png'
+                size: root.width, root.height
+                pos: self.pos
+    FloatLayout:
+        MapView:
+            lat: 33.4178
+            lon: -111.9344
+            zoom: 15
+            pos_hint: {'x': .25, 'y': .35}
+            size_hint: .5, .5
+        Button:
+            text : "Log-out"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.25, 0.1
+            pos_hint : {"x" : 0.15, "top" : 0.28}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                app.stop()
+        Button:
+            text : "Order"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.25, 0.1
+            pos_hint : {"x" : 0.375, "top" : 0.28}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "left"
+                root.manager.transition.duration = 1
+                root.manager.current = 'order'
+        Button:
+            text : "Map"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.25, 0.1
+            pos_hint : {"x" : 0.6, "top" : 0.28}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "left"
+                root.manager.transition.duration = 1
+                root.manager.current = "maps"
+
+        Image:
+            source : "logo.png"
+            size_hint_x : 0.05
+            pos_hint : {"x" : 0.48, "top" : 1.45}
+
+#TP
+<Maps>:
+    RelativeLayout
+        canvas.before:
+            Rectangle:
+                source:'gradient.png'
+                size: root.width, root.height
+                pos: self.pos
+    FloatLayout:
+        MapView:
+            lat: 33.4178
+            lon: -111.9344
+            zoom: 15
+            pos_hint: {'x': .25, 'y': .35}
+            size_hint: .5, .5
+        Label:
+            text : "Current Wait Times \n\nEinsteins Bagel: \t10 Minutes \nQdoba: \t8 Minutes \nStarbucks: \t18 Minutes"
+            font_size : 46
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            halign : "center"
+            pos_hint : {"x" : 0.015, "top" : .65}
+            background_color : "#000000"
+        Button:
+            text : "Back"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : 0.01, "top" : .99}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "right"
+                root.manager.transition.duration = 1
+                root.manager.current = 'home'
+
+#TS
+<Order>:
+    RelativeLayout
+        canvas.before:
+            Rectangle:
+                source:'gradient.png'
+                size: root.width, root.height
+                pos: self.pos
+    FloatLayout:
+        Button:
+            text : "Starbucks"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.5, 0.1
+            pos_hint : {"x" : 0.25, "top" : 0.48}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "left"
+                root.manager.transition.duration = 1
+                root.manager.current = 'starbucks'
+        Button:
+            text : "Qdoba"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.5, 0.1
+            pos_hint : {"x" : 0.25, "top" : 0.68}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "left"
+                root.manager.transition.duration = 1
+                root.manager.current = 'qdoba'
+        Button:
+            text : "Einstein's Bagels"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.5, 0.1
+            pos_hint : {"x" : 0.25, "top" : 0.88}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "left"
+                root.manager.transition.duration = 1
+                root.manager.current = 'ein'
+        Button:
+            text : "Jamba Juice"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.5, 0.1
+            pos_hint : {"x" : 0.25, "top" : 0.28}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "left"
+                root.manager.transition.duration = 1
+                root.manager.current = 'jamba'
+        Button:
+            text : "Back"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : 0.01, "top" : .99}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "right"
+                root.manager.transition.duration = 1
+                root.manager.current = 'home'
+
+
+#TS
+<Ein>:
+    RelativeLayout
+        canvas.before:
+            Rectangle:
+                source:'gradient.png'
+                size: root.width, root.height
+                pos: self.pos
+    FloatLayout:
+        Image:
+            source : "logo.png"
+            size_hint_x : 0.05
+            pos_hint : {"x" : 0.48, "top" : 1.45}
+        Image:
+            source : "eins.png"
+            size_hint_x : .5
+            pos_hint : {"x" : 0.25, "top" : 1.20}
+        Image:
+            source : "bagel.png"
+            size_hint_x : .19
+            pos_hint : {"x" : 0.02, 'top' : 1.0}
+        Label:
+            text : "Breakfast Sandwhich, Sesame Bagel, Egg, Cheese, and Bacon $4.00"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.03, "top" : 1.0}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .54}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no10()
+                Factory.MyPopup().open()
+        Image:
+            source : "bgl.png"
+            size_hint_x : .19
+            pos_hint : {"x" : 0.02, 'top' : 0.8}
+        Label:
+            text : "Plain Bagel, Your choice of spread $1.00"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.03, "top" : 0.8}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .34}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no11()
+                Factory.MyPopup().open()
+        Image:
+            source : "smoothie.png"
+            size_hint_x : .1
+            pos_hint : {"x" : 0.05, 'top' : 0.6}
+        Label:
+            text : "Smoothie, Choice of blueberry, strawberry, banana and more $5.00"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.03, "top" : 0.6}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .14}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no12()
+                Factory.MyPopup().open()
+        Button:
+            text : "Back"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : 0.01, "top" : .99}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "right"
+                root.manager.transition.duration = 1
+                root.manager.current = 'order'
+
+
+#TS
+<Starbucks>:
+    RelativeLayout
+        canvas.before:
+            Rectangle:
+                source:'gradient.png'
+                size: root.width, root.height
+                pos: self.pos
+    FloatLayout:
+        Image:
+            source : "logo.png"
+            size_hint_x : 0.05
+            pos_hint : {"x" : 0.48, "top" : 1.45}
+        Image:
+            source : "starbucks.png"
+            size_hint_x : .5
+            pos_hint : {"x" : 0.25, "top" : 1.30}
+        Image:
+            source : "coffee.png"
+            size_hint_x : .27
+            pos_hint : {"x" : 0.01, 'top' : 1.0}
+        Label:
+            text : "Caramel Frappacino: coffee, whipped cream, $4.00"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.03, "top" : 1.0}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .54}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no7()
+                Factory.MyPopup().open()
+        Image:
+            source : "bcngda.png"
+            size_hint_x : .16
+            pos_hint : {"x" : 0.04, 'top' : 0.8}
+        Label:
+            text : "Bacon and Gouda Sandwhich: bacon, egg, and gouda $4.00"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.03, "top" : 0.8}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .34}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no8()
+                Factory.MyPopup().open()
+        Image:
+            source : "chai.png"
+            size_hint_x : .16
+            pos_hint : {"x" : 0.06, 'top' : 0.6}
+        Label:
+            text : "Chai Latte: Choice of oat, coconut, or almond milk $6.30"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.03, "top" : 0.6}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .14}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no9()
+                Factory.MyPopup().open()
+        Button:
+            text : "Back"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : 0.01, "top" : .99}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "right"
+                root.manager.transition.duration = 1
+                root.manager.current = 'order'
+
+#TP
+<Qdoba>:
+    RelativeLayout
+        canvas.before:
+            Rectangle:
+                source:'gradient.png'
+                size: root.width, root.height
+                pos: self.pos
+    FloatLayout:
+        Image:
+            source : "logo.png"
+            size_hint_x : 0.05
+            pos_hint : {"x" : 0.48, "top" : 1.45}
+        Image:
+            source : "qdoba.svg.png"
+            size_hint_x : .96
+            pos_hint : {"x" : 0.03, "top" : 1.30}
+        Image:
+            source : "nachos.png"
+            size_hint_x : .15
+            pos_hint : {"x" : 0.02, 'top' : 1.0}
+        Label:
+            text : "Supreme Nachos: includes nacho cheese, onions, chicken, salsa, olives, tomatoes $8.00"
+            font_size : 25
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.03, "top" : 1.0}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .54}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no4()
+                Factory.MyPopup().open()
+        Image:
+            source : "taco.png"
+            size_hint_x : .16
+            pos_hint : {"x" : 0.04, 'top' : 0.8}
+        Label:
+            text : "Tacos: choice in tortilla, lettuce, tomatoes, and cheese $4.40"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.02, "top" : 0.8}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .34}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no5()
+                Factory.MyPopup().open()
+        Image:
+            source : "burr.png"
+            size_hint_x : .16
+            pos_hint : {"x" : 0.06, 'top' : 0.6}
+        Label:
+            text : "Burrito: Choice of meat, sauces, and rice $7.80"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.02, "top" : 0.6}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .14}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no6()
+                Factory.MyPopup().open()
+        Button:
+            text : "Back"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : 0.01, "top" : .99}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "right"
+                root.manager.transition.duration = 1
+                root.manager.current = 'order'
+
+
+
+<Jamba>:
+    RelativeLayout
+        canvas.before:
+            Rectangle:
+                source:'gradient.png'
+                size: root.width, root.height
+                pos: self.pos
+    FloatLayout:
+        Image:
+            source : "logo.png"
+            size_hint_x : 0.05
+            pos_hint : {"x" : 0.48, "top" : 1.45}
+        Image:
+            source : "Jamba-Logo.png"
+            size_hint_x : .96
+            pos_hint : {"x" : 0.03, "top" : 1.30}
+        Image:
+            source : "peach.png"
+            size_hint_x : .18
+            pos_hint : {"x" : 0.02, 'top' : 1.0}
+        Label:
+            text : "Peach Perfection: includes peaches, stevia, orange juice, banana $6.00"
+            font_size : 25
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.03, "top" : 1.0}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .54}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no1()
+                Factory.MyPopup().open()
+        Image:
+            source : "mango.png"
+            size_hint_x : .18
+            pos_hint : {"x" : 0.02, 'top' : 0.8}
+        Label:
+            text : "Mango Madness: mango, strawberry, banana, protein $4.50"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.02, "top" : 0.8}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .34}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no2()
+                Factory.MyPopup().open()
+        Image:
+            source : "berry.png"
+            size_hint_x : .14
+            pos_hint : {"x" : 0.03, 'top' : 0.6}
+        Label:
+            text : "Berry Blast: strawberry, blueberry, raspberry, blackberry, protein $4.80"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            pos_hint : {"x" : 0.02, "top" : 0.6}
+            background_color : "#000000"
+        Button:
+            text : "Add to cart"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : .86, "top" : .14}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press:
+                root.order_no3()
+                Factory.MyPopup().open()
+        Button:
+            text : "Back"
+            font_size : 30
+            font_name : "NHaasGroteskTXPro-65Md.ttf"
+            size_hint : 0.1, 0.1
+            pos_hint : {"x" : 0.01, "top" : .99}
+            color : "#FFFFFF"
+            background_color : "#000000"
+            on_press :
+                root.manager.transition.direction = "right"
+                root.manager.transition.duration = 1
+                root.manager.current = 'order'
+
+<MyPopup@Popup>
+    auto_dismiss: False
+    size_hint: 0.6, 0.2
+    pos_hint: {"x": 0.2, "top": 0.9}
+    title: "Ordered! Est. Pick Up Time ~ 10 Minutes"
+
+    BoxLayout:
+        Label
+            text: "Thank you for your order!"
+            font_size: 24
+        Button:
+            text: "Back to menu"
+            font_size: 24
+            on_release: root.dismiss()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
